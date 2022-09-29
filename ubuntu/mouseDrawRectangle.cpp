@@ -1,17 +1,18 @@
 #include <stdio.h>
 #include <GL/glut.h>
 
-GLint TopLeftX = 0.0; GLint TopLeftY = 0.0; GLint BottomRightX = 0.0; GLint BottomRightY = 0.0;
+GLfloat TopLeftX = 0.0; GLfloat TopLeftY = 0.0; GLfloat BottomRightX = 0.0; GLfloat BottomRightY = 0.0;
 GLint ViewportX=300; GLint ViewportY=300;
-int isDraw = 0;
+// int isDraw = 0;
 
 void mydisplay(){
     // glClearColor(0.0, 1.0, 0.0, 1.0);
+    glViewport(0,0,ViewportX,ViewportY);
     glClear(GL_COLOR_BUFFER_BIT);
     // //viewport 300 150
-    glViewport(0,0,ViewportX,ViewportY);
+    
 
-    glColor3f(1, 1, 1);
+    glColor3f(0.5, 0.5, 0.5);
     glBegin(GL_POLYGON);
         glVertex3f(TopLeftX / ViewportX, (ViewportY - TopLeftY) / ViewportY, 0.0);
         glVertex3f(TopLeftX / ViewportX, (ViewportY - BottomRightY) / ViewportY, 0.0);
@@ -35,8 +36,9 @@ void myReshape(int NewWidth, int NewHeight){
 }
 
 void myMouseClick(GLint Button, GLint State, GLint X, GLint Y){
-    if(isDraw) isDraw = 0;
-    else isDraw = 1;
+    // if(isDraw) isDraw = 0;
+    // else isDraw = 1;
+    // printf("isDraw %d\n",isDraw);
     if (Button == GLUT_LEFT_BUTTON && State == GLUT_DOWN){
         TopLeftX = X;
         TopLeftY = Y;
@@ -44,11 +46,14 @@ void myMouseClick(GLint Button, GLint State, GLint X, GLint Y){
 }
 
 void MyMouseDraw(GLint X, GLint Y){
-    if(isDraw){
-        BottomRightX = X;
-        BottomRightY = Y;
-        glutPostRedisplay();
-    }
+    BottomRightX = X;
+    BottomRightY = Y;
+    glutPostRedisplay();
+    // if(isDraw){
+    //     BottomRightX = X;
+    //     BottomRightY = Y;
+    //     glutPostRedisplay();
+    // }
 }
 
 
@@ -68,7 +73,7 @@ int main(int argc, char **argv){
     glutDisplayFunc(mydisplay);
     glutMouseFunc(myMouseClick);
     glutMotionFunc(MyMouseDraw);
-    glutReshapeFunc(myReshape);
+    // glutReshapeFunc(myReshape);
     glutMainLoop();
     return 0;
 }
