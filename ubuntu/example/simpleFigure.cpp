@@ -18,7 +18,7 @@ void mydisplay(){
     glViewport(0,0,Width/2,Height/2);
     glColor3f(1, 1, 1);
     glutWireSphere(0.5,10,6);
-    glRotatef(30,1,1,1);
+    
 
     glViewport(Width/2, Height/2, Width/2, Height/2);
     glColor3f(1, 1, 1);
