@@ -85,7 +85,6 @@ void mydisplay(){
         glVertex2f(0.5+0.3,-0.5+0.3);
         glVertex2f(0.5-0.3,-0.5+0.42);
         glVertex2f(0.5-0.4,-0.5+0.3);
-        
         glVertex2f(0.5-0.1,-0.5+0.45);
     glEnd();
     glBegin(GL_TRIANGLE_STRIP);
